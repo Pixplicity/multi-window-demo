@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -15,7 +16,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
+        android:clipToPadding="false"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
@@ -24,13 +27,28 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:text="(unknown)"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textColor="#fff"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dimension"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"/>
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textColor="#fff"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Drag &amp; drop"
+            android:src="@drawable/ic_drag_drop"
+            android:visibility="gone"/>
 
     </LinearLayout>
 
@@ -40,6 +58,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@drawable/bg_list"
-        android:fastScrollEnabled="false"/>
+        android:fastScrollEnabled="false"
+        android:scrollbars="none"/>
 
 </LinearLayout>
