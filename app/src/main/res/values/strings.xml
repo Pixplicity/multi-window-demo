@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Multi-Window Demo</string>
+    <string name="dimension">&lt; w320dp</string>
+</resources>
