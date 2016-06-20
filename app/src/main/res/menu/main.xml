@@ -4,7 +4,16 @@
 
     <item
         android:id="@+id/action_clear"
+        android:icon="@drawable/ic_clear"
+        android:orderInCategory="100"
         android:title="Clear"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_pip"
+        android:icon="@drawable/ic_pip"
+        android:orderInCategory="200"
+        android:title="Picture in picture"
         app:showAsAction="ifRoom"/>
 
 </menu>

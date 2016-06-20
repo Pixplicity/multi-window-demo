@@ -1,5 +1,6 @@
 package com.pixplicity.multiwindowdemo;
 
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -54,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
+        PackageManager pm = getPackageManager();
+        menu.findItem(R.id.action_pip).setVisible(pm.hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE));
         return true;
     }
 
@@ -63,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_clear:
                 sEventList.clear();
                 mAdapter.notifyDataSetChanged();
+                return true;
+            case R.id.action_pip:
+                enterPictureInPictureMode();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -80,6 +86,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         addEvent("onResume");
+    }
+
+    @Override
+    public void onMultiWindowModeChanged(boolean isInMultiWindowMode) {
+        super.onMultiWindowModeChanged(isInMultiWindowMode);
+        addEvent("onMultiWindowModeChanged: " + isInMultiWindowMode);
+    }
+
+    @Override
+    public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode) {
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode);
+        addEvent("onPictureInPictureModeChanged: " + isInPictureInPictureMode);
     }
 
     @Override
