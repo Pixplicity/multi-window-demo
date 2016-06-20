@@ -78,9 +78,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case DragEvent.ACTION_DRAG_ENTERED:
                         view.setBackgroundResource(R.drawable.bg_list_dragged);
+                        view.setForeground(getDrawable(R.drawable.ic_drop));
                         break;
                     case DragEvent.ACTION_DRAG_EXITED:
                         view.setBackgroundResource(R.drawable.bg_list);
+                        view.setForeground(null);
                         break;
                     case DragEvent.ACTION_DROP:
                         // Dropped, reassign View to ViewGroup
@@ -93,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case DragEvent.ACTION_DRAG_ENDED:
                         view.setBackgroundResource(R.drawable.bg_list);
+                        view.setForeground(null);
                         break;
                     default:
                         break;
