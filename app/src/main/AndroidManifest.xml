@@ -11,19 +11,33 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity">
+            android:name=".MainActivity"
+            android:label="Multi-Window Main"
+            android:launchMode="singleTask">
+
             <!-- android:configChanges="screenSize|smallestScreenSize" -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
             <layout
                 android:defaultHeight="640dp"
                 android:defaultWidth="640dp"
                 android:gravity="bottom|end"
                 android:minHeight="480dp"
                 android:minWidth="480dp"/>
+        </activity>
+        <activity
+            android:name=".DragActivity"
+            android:label="Multi-Window Drag"
+            android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

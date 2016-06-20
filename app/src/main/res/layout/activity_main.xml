@@ -43,12 +43,12 @@
             android:layout_weight="1"/>
 
         <ImageButton
+            android:id="@+id/ib_drag"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:contentDescription="Drag &amp; drop"
-            android:src="@drawable/ic_drag_drop"
-            android:visibility="gone"/>
+            android:src="@drawable/ic_drag_drop"/>
 
     </LinearLayout>
 

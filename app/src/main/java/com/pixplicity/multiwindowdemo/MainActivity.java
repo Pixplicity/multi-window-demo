@@ -1,14 +1,18 @@
 package com.pixplicity.multiwindowdemo;
 
+import android.content.ClipData;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -19,8 +23,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
+
     private View mVgRoot;
     private TextView mTvSize;
+    private ImageButton mIbDrag;
     private ListView mLvInfo;
 
     private BaseAdapter mAdapter;
@@ -43,7 +50,57 @@ public class MainActivity extends AppCompatActivity {
 
         mVgRoot = findViewById(R.id.vg_root);
         mTvSize = (TextView) findViewById(R.id.tv_size);
+        mIbDrag = (ImageButton) findViewById(R.id.ib_drag);
+        mIbDrag.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    ClipData data = ClipData.newPlainText(TAG, "Hello from " + TAG);
+                    View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+                    // Note that this view doesn't allow being dragged outside of our app;
+                    // to do so, provide DRAG_FLAG_GLOBAL
+                    view.startDragAndDrop(data, shadowBuilder, view, 0);
+                    view.setVisibility(View.INVISIBLE);
+                    return true;
+                } else {
+                    view.setVisibility(View.VISIBLE);
+                    return false;
+                }
+            }
+        });
         mLvInfo = (ListView) findViewById(R.id.lv_events);
+        mLvInfo.setOnDragListener(new View.OnDragListener() {
+            @Override
+            public boolean onDrag(View view, DragEvent dragEvent) {
+                switch (dragEvent.getAction()) {
+                    case DragEvent.ACTION_DRAG_STARTED:
+                        // do nothing
+                        break;
+                    case DragEvent.ACTION_DRAG_ENTERED:
+                        view.setBackgroundResource(R.drawable.bg_list_dragged);
+                        break;
+                    case DragEvent.ACTION_DRAG_EXITED:
+                        view.setBackgroundResource(R.drawable.bg_list);
+                        break;
+                    case DragEvent.ACTION_DROP:
+                        // Dropped, reassign View to ViewGroup
+                        View draggedView = (View) dragEvent.getLocalState();
+                        String event = "onDrag " + draggedView;
+                        for (int i = 0; i < dragEvent.getClipData().getItemCount(); i++) {
+                            event += "\n- " + dragEvent.getClipData().getItemAt(i).getText();
+                        }
+                        addEvent(event);
+                        break;
+                    case DragEvent.ACTION_DRAG_ENDED:
+                        view.setBackgroundResource(R.drawable.bg_list);
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+
         mAdapter = new SimpleAdapter(this, sEventList, android.R.layout.simple_list_item_1,
                 new String[]{"event"},
                 new int[]{android.R.id.text1});
