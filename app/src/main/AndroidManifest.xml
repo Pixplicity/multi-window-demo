@@ -12,8 +12,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="Multi-Window Main"
-            android:launchMode="singleTask">
+            android:label="Multi-Window Main">
 
             <!-- android:configChanges="screenSize|smallestScreenSize" -->
             <intent-filter>
@@ -31,8 +30,7 @@
         </activity>
         <activity
             android:name=".DragActivity"
-            android:label="Multi-Window Drag"
-            android:taskAffinity="">
+            android:label="Multi-Window Drag">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
