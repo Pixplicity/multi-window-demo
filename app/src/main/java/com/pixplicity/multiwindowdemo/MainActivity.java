@@ -1,6 +1,7 @@
 package com.pixplicity.multiwindowdemo;
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -123,13 +124,45 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_clear:
+            case R.id.action_clear: {
                 sEventList.clear();
                 mAdapter.notifyDataSetChanged();
-                return true;
-            case R.id.action_pip:
+            }
+            return true;
+            case R.id.action_pip: {
                 enterPictureInPictureMode();
-                return true;
+            }
+            return true;
+            case R.id.action_intent_explicit_here: {
+                Intent intent = new Intent(this, DragActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+            return true;
+            case R.id.action_intent_explicit_adjacent: {
+                Intent intent = new Intent(this, DragActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                        Intent.FLAG_ACTIVITY_LAUNCH_ADJACENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                startActivity(intent);
+            }
+            return true;
+            case R.id.action_intent_implicit_here: {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                // What the heck?! It doesn't work when we have a default intent chooser!
+                //startActivity(intent);
+                startActivity(Intent.createChooser(intent, "Go for it!"));
+            }
+            return true;
+            case R.id.action_intent_implicit_adjacent: {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                        Intent.FLAG_ACTIVITY_LAUNCH_ADJACENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                // What the heck?! It doesn't work when we have a default intent chooser!
+                //startActivity(intent);
+                startActivity(Intent.createChooser(intent, "Go for it!"));
+            }
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

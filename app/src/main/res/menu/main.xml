@@ -16,4 +16,28 @@
         android:title="Picture in picture"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/action_intent_explicit_here"
+        android:orderInCategory="300"
+        android:title="Explicit intent (here)"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_intent_explicit_adjacent"
+        android:orderInCategory="300"
+        android:title="Explicit intent (adjacent)"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_intent_implicit_here"
+        android:orderInCategory="301"
+        android:title="Implicit intent (here)"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_intent_implicit_adjacent"
+        android:orderInCategory="301"
+        android:title="Implicit intent (adjacent)"
+        app:showAsAction="never"/>
+
 </menu>
