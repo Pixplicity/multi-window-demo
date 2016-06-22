@@ -4,10 +4,10 @@
 
     <item
         android:id="@+id/action_clear"
-        android:icon="@drawable/ic_clear"
         android:orderInCategory="100"
-        android:title="Clear"
-        app:showAsAction="ifRoom"/>
+        android:title="Clear log"
+        android:titleCondensed="Clear"
+        app:showAsAction="withText|always"/>
 
     <item
         android:id="@+id/action_pip"
