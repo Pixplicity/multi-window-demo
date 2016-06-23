@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     private View mVgRoot;
     private TextView mTvSize;
-    private ImageButton mIbDrag;
-    private ListView mLvInfo;
 
     private BaseAdapter mAdapter;
     private static List<HashMap<String, String>> sEventList = new LinkedList<>();
@@ -51,8 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
         mVgRoot = findViewById(R.id.vg_root);
         mTvSize = (TextView) findViewById(R.id.tv_size);
-        mIbDrag = (ImageButton) findViewById(R.id.ib_drag);
-        mIbDrag.setOnTouchListener(new View.OnTouchListener() {
+
+        ImageButton ibDrag = (ImageButton) findViewById(R.id.ib_drag);
+        ibDrag.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
@@ -69,8 +68,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        mLvInfo = (ListView) findViewById(R.id.lv_events);
-        mLvInfo.setOnDragListener(new View.OnDragListener() {
+
+        ListView lvInfo = (ListView) findViewById(R.id.lv_events);
+        lvInfo.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View view, DragEvent dragEvent) {
                 switch (dragEvent.getAction()) {
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new SimpleAdapter(this, sEventList, android.R.layout.simple_list_item_1,
                 new String[]{"event"},
                 new int[]{android.R.id.text1});
-        mLvInfo.setAdapter(mAdapter);
+        lvInfo.setAdapter(mAdapter);
 
         addEvent("onCreate");
     }
