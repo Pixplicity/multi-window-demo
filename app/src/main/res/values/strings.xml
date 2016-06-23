@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Multi-Window Demo</string>
     <string name="dimension">&lt; w320dp</string>
+    <string name="clear_log">Clear log</string>
+    <string name="picture_in_picture">Picture in picture</string>
+    <string name="explicit_intent_here">Explicit intent (here)</string>
+    <string name="explicit_intent_adjacent">Explicit intent (adjacent)</string>
+    <string name="implicit_intent_here">Implicit intent (here)</string>
+    <string name="implicit_intent_adjacent">Implicit intent (adjacent)</string>
+    <string name="drag_drop"><![CDATA[Drag & drop]]></string>
 </resources>

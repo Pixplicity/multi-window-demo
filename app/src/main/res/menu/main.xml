@@ -5,7 +5,7 @@
     <item
         android:id="@+id/action_clear"
         android:orderInCategory="100"
-        android:title="Clear log"
+        android:title="@string/clear_log"
         android:titleCondensed="Clear"
         app:showAsAction="withText|always"/>
 
@@ -13,31 +13,31 @@
         android:id="@+id/action_pip"
         android:icon="@drawable/ic_pip"
         android:orderInCategory="200"
-        android:title="Picture in picture"
+        android:title="@string/picture_in_picture"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_intent_explicit_here"
         android:orderInCategory="300"
-        android:title="Explicit intent (here)"
+        android:title="@string/explicit_intent_here"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/action_intent_explicit_adjacent"
         android:orderInCategory="300"
-        android:title="Explicit intent (adjacent)"
+        android:title="@string/explicit_intent_adjacent"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/action_intent_implicit_here"
         android:orderInCategory="301"
-        android:title="Implicit intent (here)"
+        android:title="@string/implicit_intent_here"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/action_intent_implicit_adjacent"
         android:orderInCategory="301"
-        android:title="Implicit intent (adjacent)"
+        android:title="@string/implicit_intent_adjacent"
         app:showAsAction="never"/>
 
 </menu>

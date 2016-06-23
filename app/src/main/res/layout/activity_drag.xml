@@ -16,7 +16,7 @@
         android:layout_height="96dp"
         android:layout_gravity="center"
         android:background="?android:attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Drag &amp; drop"
+        android:contentDescription="@string/drag_drop"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_drag_drop"/>
 
